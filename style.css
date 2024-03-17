@@ -1,0 +1,27 @@
+
+body {
+    background: #0e0e0e;
+    height: 800vh;
+}
+
+.container {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 100vh;
+    max-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+svg {
+    display: inline-block;
+    height: 100%;
+}
+
+html { 
+    scroll-behavior: smooth; 
+    /* scroll-padding: 10vh; */
+}
