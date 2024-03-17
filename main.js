@@ -5,6 +5,7 @@ const rosePathLength = rosePath.getTotalLength();
 const text = document.querySelector('#text');
 text.innerHTML = 'Scroll down slowly :)';
 
+let scrollBottom;
 let vh = window.innerHeight * 0.01;
 // set the value in the --vh custom property to the root of the document
 document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -20,9 +21,15 @@ window.addEventListener('scroll', () => {
   roseSvg.setAttribute('stroke-width', 7);
   roseSvg.setAttribute('stroke', '#DABC94');
 
-
   // hides the text on first scroll.
-  if (scrollPercentage > 0.001 ) {
+  if (scrollPercentage <= 0) {
+    text.style = 'color : rgba(255, 255, 255, 1)';
+    text.innerHTML = 'Scroll down slowly :)'
+    if (scrollBottom) {
+      text.innerHTML = 'Enjoy your day! stay hydrated :p';
+    }
+  }
+  if (scrollPercentage > 0.001 && scrollPercentage < 100) {
     text.style = 'color : rgba(0, 0, 0, 0)';
   }
 
@@ -34,6 +41,12 @@ window.addEventListener('scroll', () => {
   if (scrollPercentage >=.41 && scrollPercentage <= 0.5) {
     text.style = 'color : rgba(255, 255, 255, 1)';
     text.innerHTML = 'I Love You';
+  }
+
+  if (scrollPercentage == 1) {
+    text.style = 'color : rgba(255, 255, 255, 1)';
+    text.innerHTML = 'Scroll to Top';
+    scrollBottom = true;
   }
   
   // changes the strokeDashOffset and strokeDashArray properties
